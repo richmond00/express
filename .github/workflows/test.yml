@@ -20,8 +20,8 @@ jobs:
           sudo apt-get install -y redis-server
           redis-server --daemonize yes --requirepass test_env --port 6380
       - name: Run test
-        run: npm run test
+        run: npm run test:ci
       - name: Test build
-        run: npm runbuild
+        run: npm run build
 
          
