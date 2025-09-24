@@ -5,7 +5,7 @@ import * as redis from "redis";
 let app: Express.Application;
 let client: RedisClient;
 
-const REDIS_URL = "redis://default:test_env@localhost:6380"
+const REDIS_URL = "redis://default:test_env@127.0.0.1:6380"
 
 beforeAll(async () => {
   client = redis.createClient({ url : REDIS_URL });
