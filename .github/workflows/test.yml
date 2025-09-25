@@ -18,7 +18,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y redis-server
-          sudo redis-server --daemonize yes --requirepass test_env --port 6379
+          sudo redis-server --daemonize yes --requirepass test_env --port 6380
           echo "hello"
           echo "ping" | nc -v localhost 6380
       - name: Run test
