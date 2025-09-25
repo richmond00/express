@@ -14,8 +14,8 @@ jobs:
           node-version: "18"
       - name: Install npm packages
         run: npm ci
-      - name: Update apt-get
-        run: sudo apt-get update
+      # - name: Update apt-get
+      #   run: sudo apt-get update
       - name: Install redis-server
         run: sudo apt-get install -y redis-server
       - name: Run redis-server
