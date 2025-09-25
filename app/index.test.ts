@@ -1,15 +1,15 @@
 import request from "supertest";
 import { LIST_KEY, RedisClient, createApp } from "./app";
 import * as redis from "redis";
+import { App } from "supertest/types";
 
-let app: Express.Application;
+let app: App;
 let client: RedisClient;
 
 const REDIS_URL = "redis://default:test_env@localhost:6380";
 
 beforeAll(async () => {
   client = redis.createClient({ url : REDIS_URL });
-
   await client.connect();
   app = createApp(client);
 });
@@ -26,7 +26,7 @@ afterAll(async () => {
 describe("POST /messages", () => {
   it("responds with a success message", async () => {
     const pingres = await client.ping();
-    console.log('client::: ', pingres);
+      console.log('client::: ', pingres);
     const response = await request(app)
     .post("/messages")
     .send({ message: "testing with redis" });
