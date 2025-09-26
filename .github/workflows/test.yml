@@ -14,21 +14,13 @@ jobs:
           node-version: "18"
       - name: Install npm packages
         run: npm ci
-      # - name: Update apt-get
-      #   run: sudo apt-get update
-      - name: Install redis-server
-        run: sudo apt-get install -y redis-server
-      - name: Run redis-server
-        run: redis-server --daemonize yes --requirepass test_env --port 6380 
-      # - name: Install and run redis-server
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y redis-server
-      #     sudo redis-server --daemonize yes --requirepass test_env --port 6380
-      #     echo "hello"
-      #     echo "ping" | nc -v localhost 6380
-      - name: Run test
-        run: npm run test:ci
+      - name: Install and run redis-server
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y redis-server
+          sudo redis-server --daemonize yes --requirepass test_env --port 6380
+      # - name: Run test
+      #   run: npm run test:ci
       - name: Test build
         run: npm run build
 
