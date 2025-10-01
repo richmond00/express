@@ -25,10 +25,8 @@ jobs:
          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_PUBLIC_IP }} "
            cd express
            git pull || exit 1
-           sudo npm install -g pm2
            npm install || exit 1
-           npm run build || exit 1
-           sudo pm2 delete all || true
-           sudo pm2 start npm -- start
+           sudo pm2 reload
+           exit
          "
 
