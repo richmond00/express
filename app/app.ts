@@ -15,6 +15,7 @@ export const createApp = (client: RedisClient) => {
 
   app.post("/messages", async(request, response) => {
     const { message } = request.body;
+    console.log('### post message', message);
     await client.lPush(LIST_KEY, message);
     response.status(200).send("Message added to list");
   });
@@ -32,6 +33,7 @@ export const createApp = (client: RedisClient) => {
 
   app.get("/messages", async (request, response) => {
     const messages = await client.lRange(LIST_KEY, 0, -1);
+     console.log('### get message', messages);
     response.status(200).send(messages);
   });
 
